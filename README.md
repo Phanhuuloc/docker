@@ -36,7 +36,7 @@
     Finally save it
     :x! or :wq!
 
-#### Docker - How to cleanup (unused) resources
+## Docker - How to cleanup (unused) resources
 
 Once in a while, you may need to cleanup resources (containers, volumes, images, networks) ...
     
@@ -75,19 +75,71 @@ Once in a while, you may need to cleanup resources (containers, volumes, images,
     
     $ docker-machine create --driver virtualbox --virtualbox-disk-size "40000" default
 
-#### hdfs
+## hdfs
+- list
+```bash
 hadoop fsck / -files -blocks
+``` 
+- create
+```bash
 hdfs dfs -mkdir /user/login_user_name   
+``` 
+- copy to hdfs system
+```bash
 hdfs dfs -put file_name /user/login_user_name
 hdfs dfs -copyFromLocal /home/loc/hadoop-2.5.2/input/2008.csv /wordcount/input
+``` 
+- list
+```bash
 hadoop hdfs dfs -ls .
 hadoop hdfs dfs -get file_name /user/login_user_name
+``` 
+- remove
+```bash
 hadoop hdfs dfs -rm file_name /user/login_user_name
 hdfs dfs -rm -r hdfs://master:9000/wordcount/output/flightsCount1
+```
+- help
+```bash
 hadoop hdfs dfs -help
-hadoop jar ./hadoop-mapreduce-examples-2.3.0.jar wordcount /wordcount/input/file01 /wordcount/output/file01-output
-
+```
+- read
+```bash
 hadoop fs -cat /user/root/output/flightsCount/part-r-00000
+``` 
 
+## Map reduce
+#### list jobs
+version <2.3.0
+hadoop job -kill $jobId
+You can get a list of all jobId's doing:
+hadoop job -list
+version >=2.3.0
+Kill a hadoop job:
+yarn application -kill $ApplicationId
+You can get a list of all ApplicationId's doing:
+yarn application -list
+
+#### example
+- wordcount
+```bash
+hadoop jar /home/loc/hadoop-2.5.2/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.5.2.jar wordcount /wordcount/input/file01 /wordcount/output/file01-output
+```
+- pi
+```bash
+hadoop jar /home/loc/hadoop-2.5.2/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.5.2.jar pi 2 10
+```
+
+## my application
+```bash
+hadoop jar $HADOOP_CLASSPATH /wordcount/input/2008.csv /wordcount/output/2008-flight-count
+hadoop fs -cat /wordcount/output/flightsCount/part-r-00000
+```
+    
 #### US Airline on-time Performance
-https://old.datahub.io/dataset/us-airline-on-time-performance/resource/37834910-8634-45a9-aed4-9d59dac7f1d6
+    https://old.datahub.io/dataset/us-airline-on-time-performance/resource/37834910-8634-45a9-aed4-9d59dac7f1d6
+    
+#### apache bigtop
+https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.5.0
+https://www.apache.org/dist/bigtop/bigtop-1.2.0/repos/
+http://www.bogotobogo.com/Hadoop/BigData_hadoop_Hive_Install_On_Ubuntu_16_04.php
