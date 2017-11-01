@@ -75,6 +75,10 @@ Once in a while, you may need to cleanup resources (containers, volumes, images,
     
     $ docker-machine create --driver virtualbox --virtualbox-disk-size "40000" default
 
+
+#### ssh
+    https://askubuntu.com/questions/446724/copy-folders-not-one-file-using-ssh-ubuntu
+
 ## hdfs
 - list
 ```bash
@@ -143,3 +147,17 @@ hadoop fs -cat /wordcount/output/flightsCount/part-r-00000
 https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.5.0
 https://www.apache.org/dist/bigtop/bigtop-1.2.0/repos/
 http://www.bogotobogo.com/Hadoop/BigData_hadoop_Hive_Install_On_Ubuntu_16_04.php
+
+#### Hive
+    - CREATE TABLE records1 (year STRING, temperature INT, quality INT)
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY '\t';
+    - LOAD DATA LOCAL INPATH '/home/loc/hadoop-2.5.2/input/2008.csv' OVERWRITE INTO TABLE records1;
+
+##ERROR
+#### Hive
+```
+Found class jline.Terminal, but interface was expected
+```
+Delete jline from the Hadoop lib directory (it's only pulled in transitively from ZooKeeper).
+export HADOOP_USER_CLASSPATH_FIRST=true
