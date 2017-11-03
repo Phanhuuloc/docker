@@ -10,7 +10,7 @@ public class FlightsByCarrierMapper extends
     @Override
     protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
-        System.out.println("Begin Mapper task");
+
         if (key.get() > 0) {
             String[] lines = new
                     CSVParser().parseLine(value.toString());

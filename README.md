@@ -9,7 +9,7 @@
     http://data-flair.training/blogs/install-hadoop-2-x-ubuntu-hadoop-multi-node-cluster/
     https://xuri.me/2016/03/22/setup-hadoop-on-ubuntu-multi-node-cluster.html
 
-####~/.bashrc
+#### ~/.bashrc
     export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
     export HADOOP_PREFIX="/hadoop/hadoop-2.5.2"
     export PATH=$PATH:$HADOOP_PREFIX/bin
@@ -154,7 +154,7 @@ http://www.bogotobogo.com/Hadoop/BigData_hadoop_Hive_Install_On_Ubuntu_16_04.php
     FIELDS TERMINATED BY '\t';
     - LOAD DATA LOCAL INPATH '/home/loc/hadoop-2.5.2/input/2008.csv' OVERWRITE INTO TABLE records1;
 
-##ERROR
+## ERROR
 #### Hive
 ```
 Found class jline.Terminal, but interface was expected

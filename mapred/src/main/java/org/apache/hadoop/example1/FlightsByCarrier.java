@@ -15,9 +15,6 @@ public class FlightsByCarrier {
         job.setJarByClass(FlightsByCarrier.class);
         job.setJobName("FlightsByCarrier");
 
-        System.out.println("Begin mapred task");
-        System.out.println("Begin mapred task");
-
         TextInputFormat.addInputPath(job, new Path(args[0]));
         job.setInputFormatClass(TextInputFormat.class);
 
@@ -29,7 +26,6 @@ public class FlightsByCarrier {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        System.out.println("End mapred task");
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }

@@ -8,7 +8,7 @@ public class FlightsByCarrierReducer extends
     @Override
     protected void reduce(Text token, Iterable<IntWritable> counts,
                           Context context) throws IOException, InterruptedException {
-        System.out.println("Begin reducer task");
+
         int sum = 0;
         for (IntWritable count : counts) {
             sum+= count.get();
