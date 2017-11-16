@@ -161,3 +161,7 @@ Found class jline.Terminal, but interface was expected
 ```
 Delete jline from the Hadoop lib directory (it's only pulled in transitively from ZooKeeper).
 export HADOOP_USER_CLASSPATH_FIRST=true
+
+
+## Config
+hdfs getconf -confKey fs.default.name
